@@ -1,0 +1,20 @@
+{
+  "name": "shippitsu",
+  "version": "1.0.0",
+  "description": "A blogging app with a variety of features, mostly running in the browser. A quiet corner on the internet for writing that matters to you.",
+  "license": "AGPL-3.0-only",
+  "author": "Shubham Tiwari",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "morgan": "^1.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
