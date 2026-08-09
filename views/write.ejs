@@ -1,0 +1,148 @@
+<%- include('partials/head') %>
+
+    <body>
+        <%- include('partials/navbar') %>
+
+            <main class="wrap" style="padding: 52px 24px; min-height: 70vh;">
+
+                <!-- The Pencil Icon and Eyebrow Text -->
+                <p class="eyebrow" style="display: flex; align-items: center; gap: 6px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <path
+                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                        <path fill-rule="evenodd"
+                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                    </svg>
+                    Draft a new blog
+                </p>
+
+                <style>
+                    .editor-input {
+                        font-family: var(--sans);
+                        font-size: 15px;
+                        border: 1px solid var(--border);
+                        background: var(--paper);
+                        color: var(--espresso);
+                        padding: 14px 16px;
+                        border-radius: 8px;
+                        outline: none;
+                        transition: border-color 0.2s, box-shadow 0.2s;
+                        width: 100%;
+                    }
+
+                    .editor-input:focus {
+                        border-color: var(--terracotta);
+                        /* Gives a subtle terracotta glow when typing */
+                        box-shadow: 0 0 0 3px rgba(193, 80, 46, 0.1);
+                    }
+
+                    .editor-title {
+                        font-family: var(--serif);
+                        font-size: 32px;
+                        font-weight: 600;
+                    }
+
+                    .editor-toolbar {
+                        display: flex;
+                        gap: 8px;
+                        padding: 10px 16px;
+                        background: var(--paper);
+                        border: 1px solid var(--border);
+                        border-bottom: none;
+                        border-radius: 8px 8px 0 0;
+                    }
+
+                    .toolbar-btn {
+                        background: none;
+                        border: 1px solid transparent;
+                        color: var(--muted);
+                        cursor: pointer;
+                        padding: 6px 10px;
+                        border-radius: 4px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-family: var(--serif);
+                        font-size: 16px;
+                    }
+
+                    .toolbar-btn:hover {
+                        background: var(--cream);
+                        color: var(--espresso);
+                        border-color: var(--border);
+                    }
+
+                    .editor-textarea {
+                        border-radius: 0 0 8px 8px;
+                        /* Flat top to connect with toolbar */
+                        min-height: 400px;
+                        resize: vertical;
+                        line-height: 1.7;
+                    }
+
+                    .editor-footer {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-top: 8px;
+                    }
+
+                    .status-text {
+                        font-family: var(--mono);
+                        font-size: 12px;
+                        color: var(--muted);
+                    }
+                </style>
+
+                <form id="write-form" style="display: flex; flex-direction: column; gap: 16px;">
+
+
+                    <input type="text" id="title" class="editor-input editor-title" placeholder="Blog Title" required>
+
+
+                    <div class="grid2">
+                        <input type="text" id="author" class="editor-input"
+                            placeholder="Author Name (e.g., Shubham Tiwari)" required>
+                        <input type="text" id="tag" class="editor-input" style="font-family: var(--mono);"
+                            placeholder="Tags (e.g., #math, #python)">
+                    </div>
+
+                    <div class="editor-container" style="margin-top: 8px;">
+
+                        <!-- Formatting Toolbar -->
+                        <div class="editor-toolbar">
+                            <button type="button" class="toolbar-btn" title="Bold"><b>B</b></button>
+                            <button type="button" class="toolbar-btn" title="Italic"><i>I</i></button>
+                            <button type="button" class="toolbar-btn" title="Underline"><u>U</u></button>
+                            <button type="button" class="toolbar-btn" title="Strikethrough"><s>S</s></button>
+                            <button type="button" class="toolbar-btn" title="Code"><b><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-code-slash" viewBox="0 0 16 16">
+                                        <path
+                                            d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0m6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0" />
+                                    </svg></b></button>
+                            <button type="button" class="toolbar-btn" title="Undo"><b>↺</b></button>
+                            <button type="button" class="toolbar-btn" title="Redo"><b>↻</b></button>
+                            <button type="button" class="toolbar-btn" title="Clear"><b>🗑️</b></button>
+                            <button type="button" class="toolbar-btn" style="font-family: var(--sans);"
+                                title="Link"><b>🔗</b></button>
+                        </div>
+
+                        <textarea id="content" class="editor-input editor-textarea" placeholder="Start writing here..."
+                            required></textarea>
+                    </div>
+
+                    <div class="editor-footer">
+                        <span class="status-text" id="word-count">Word count: 0 | Auto-saved: Not yet</span>
+                        <button type="submit"
+                            style="background: var(--terracotta); color: #fff; border: none; padding: 12px 28px; border-radius: 6px; font-family: var(--sans); font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s;">
+                            Publish Blog
+                        </button>
+                    </div>
+                </form>
+            </main>
+
+            <script src="/js/editor.js"></script>
+
+            <%- include('partials/footer') %>
