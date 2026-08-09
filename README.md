@@ -82,23 +82,6 @@ The app runs at:
 http://localhost:3000
 ```
 
-## Deployment
-
-This project is not a fit for GitHub Pages because it needs a Node/Express server.
-
-Recommended deployment options:
-
-* **Render**
-* **Railway**
-* **Fly.io**
-* **Any Node.js host**
-
-Deployment settings:
-
-* Build command: `npm install`
-* Start command: `npm start`
-* Port: use the platform-provided `PORT` environment variable
-
 ## Notes
 
 * Posts are stored in the browser, so they are local to each device and browser profile.
