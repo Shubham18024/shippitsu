@@ -1,0 +1,42 @@
+<%- include('partials/head') %>
+
+    <body>
+        <%- include('partials/navbar') %>
+
+            <main class="wrap"
+                style="padding: 80px 24px; min-height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+
+                <!-- The Dog Image Graphic -->
+                <img src="/images/undraw_page-eaten_b2rt.svg" alt="A dog saying page eaten" draggable="false"
+                    oncontextmenu="return false;" ondragstart="return false;"
+                    style="width: 180px; height: auto; margin-bottom: 24px; user-select: none; pointer-events: none;">
+
+                <p class="eyebrow" style="color: var(--terracotta); font-size: 14px;">Error 404 — Paws, you're lost!</p>
+
+                <h1 style="font-family: var(--serif); font-size: 48px; margin-bottom: 16px; color: var(--espresso);">
+                    Oops! The dog ate this page.
+                </h1>
+
+                <p
+                    style="font-family: var(--sans); font-size: 16px; color: var(--muted); max-width: 500px; margin-bottom: 32px; line-height: 1.6;">
+                    We searched high and low, but an overly enthusiastic pup mistook this URL for a snack. While we
+                    clean up the mess, why don't you check out my portfolio and other web apps instead?
+                </p>
+
+                <!-- Action Buttons -->
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="/" class="btn-outline" style="font-size: 15px; padding: 12px 24px;">
+                        Back to Homepage
+                    </a>
+                    <a href="https://anchorapp.me" target="_blank" rel="noopener noreferrer" class="btn-outline"
+                        style="font-size: 15px; padding: 12px 24px; border-color: var(--sage); color: var(--sage);">
+                        Explore Portfolio &amp; Apps
+                    </a>
+                </div>
+
+            </main>
+
+            <%- include('partials/footer') %>
+    </body>
+
+    </html>

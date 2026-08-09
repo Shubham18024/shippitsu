@@ -14,4 +14,8 @@ router.get('/write', (req, res) => {
     res.render('write');
 });
 
+router.get('/post', (req, res) => {
+    res.render('post'); 
+});
+
 export default router;  

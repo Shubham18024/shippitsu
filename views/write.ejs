@@ -1,148 +1,260 @@
 <%- include('partials/head') %>
 
-    <body>
-        <%- include('partials/navbar') %>
+<body>
+    <%- include('partials/navbar') %>
 
-            <main class="wrap" style="padding: 52px 24px; min-height: 70vh;">
+    <main class="wrap" style="padding: 52px 24px; min-height: 70vh; position: relative;">
 
-                <!-- The Pencil Icon and Eyebrow Text -->
-                <p class="eyebrow" style="display: flex; align-items: center; gap: 6px;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-pencil-square" viewBox="0 0 16 16">
-                        <path
-                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                        <path fill-rule="evenodd"
-                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
-                    </svg>
-                    Draft a new blog
-                </p>
+        <p class="eyebrow" style="display: flex; align-items: center; gap: 6px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <path
+                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                <path fill-rule="evenodd"
+                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+            </svg>
+            Draft a new blog
+        </p>
 
-                <style>
-                    .editor-input {
-                        font-family: var(--sans);
-                        font-size: 15px;
-                        border: 1px solid var(--border);
-                        background: var(--paper);
-                        color: var(--espresso);
-                        padding: 14px 16px;
-                        border-radius: 8px;
-                        outline: none;
-                        transition: border-color 0.2s, box-shadow 0.2s;
-                        width: 100%;
-                    }
+        <style>
+            .writer-layout {
+                display: grid;
+                grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+                gap: 24px;
+                align-items: start;
+            }
 
-                    .editor-input:focus {
-                        border-color: var(--terracotta);
-                        /* Gives a subtle terracotta glow when typing */
-                        box-shadow: 0 0 0 3px rgba(193, 80, 46, 0.1);
-                    }
+            .editor-input {
+                font-family: var(--sans);
+                font-size: 15px;
+                border: 1px solid var(--border);
+                background: var(--paper);
+                color: var(--espresso);
+                padding: 14px 16px;
+                border-radius: 8px;
+                outline: none;
+                transition: border-color 0.2s, box-shadow 0.2s;
+                width: 100%;
+            }
 
-                    .editor-title {
-                        font-family: var(--serif);
-                        font-size: 32px;
-                        font-weight: 600;
-                    }
+            .editor-input:focus {
+                border-color: var(--terracotta);
+                box-shadow: 0 0 0 3px rgba(193, 80, 46, 0.1);
+            }
 
-                    .editor-toolbar {
-                        display: flex;
-                        gap: 8px;
-                        padding: 10px 16px;
-                        background: var(--paper);
-                        border: 1px solid var(--border);
-                        border-bottom: none;
-                        border-radius: 8px 8px 0 0;
-                    }
+            .editor-title {
+                font-family: var(--serif);
+                font-size: 32px;
+                font-weight: 600;
+            }
 
-                    .toolbar-btn {
-                        background: none;
-                        border: 1px solid transparent;
-                        color: var(--muted);
-                        cursor: pointer;
-                        padding: 6px 10px;
-                        border-radius: 4px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-family: var(--serif);
-                        font-size: 16px;
-                    }
+            .editor-toolbar {
+                display: flex;
+                gap: 8px;
+                padding: 10px 16px;
+                background: var(--paper);
+                border: 1px solid var(--border);
+                border-bottom: none;
+                border-radius: 8px 8px 0 0;
+            }
 
-                    .toolbar-btn:hover {
-                        background: var(--cream);
-                        color: var(--espresso);
-                        border-color: var(--border);
-                    }
+            .toolbar-btn {
+                background: none;
+                border: 1px solid transparent;
+                color: var(--muted);
+                cursor: pointer;
+                padding: 6px 10px;
+                border-radius: 4px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: var(--serif);
+                font-size: 16px;
+            }
 
-                    .editor-textarea {
-                        border-radius: 0 0 8px 8px;
-                        /* Flat top to connect with toolbar */
-                        min-height: 400px;
-                        resize: vertical;
-                        line-height: 1.7;
-                    }
+            .toolbar-btn:hover {
+                background: var(--cream);
+                color: var(--espresso);
+                border-color: var(--border);
+            }
 
-                    .editor-footer {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        margin-top: 8px;
-                    }
+            .editor-textarea {
+                border-radius: 0 0 8px 8px;
+                min-height: 400px;
+                resize: vertical;
+                line-height: 1.7;
+            }
 
-                    .status-text {
-                        font-family: var(--mono);
-                        font-size: 12px;
-                        color: var(--muted);
-                    }
-                </style>
+            .editor-footer {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: 8px;
+            }
 
-                <form id="write-form" style="display: flex; flex-direction: column; gap: 16px;">
+            .preview-panel {
+                background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.94));
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                padding: 22px;
+                position: sticky;
+                top: 24px;
+            }
 
+            .preview-panel h2 {
+                font-size: 24px;
+                margin-bottom: 12px;
+            }
 
-                    <input type="text" id="title" class="editor-input editor-title" placeholder="Blog Title" required>
+            .preview-meta {
+                font-family: var(--mono);
+                font-size: 12px;
+                color: var(--muted);
+                margin-bottom: 18px;
+            }
 
+            .preview-empty {
+                color: var(--muted);
+                font-style: italic;
+            }
 
-                    <div class="grid2">
-                        <input type="text" id="author" class="editor-input"
-                            placeholder="Author Name (e.g., Shubham Tiwari)" required>
-                        <input type="text" id="tag" class="editor-input" style="font-family: var(--mono);"
-                            placeholder="Tags (e.g., #math, #python)">
-                    </div>
+            .preview-label {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                margin-bottom: 12px;
+            }
 
-                    <div class="editor-container" style="margin-top: 8px;">
+            .status-text {
+                font-family: var(--mono);
+                font-size: 12px;
+                color: var(--muted);
+            }
 
-                        <!-- Formatting Toolbar -->
-                        <div class="editor-toolbar">
-                            <button type="button" class="toolbar-btn" title="Bold"><b>B</b></button>
-                            <button type="button" class="toolbar-btn" title="Italic"><i>I</i></button>
-                            <button type="button" class="toolbar-btn" title="Underline"><u>U</u></button>
-                            <button type="button" class="toolbar-btn" title="Strikethrough"><s>S</s></button>
-                            <button type="button" class="toolbar-btn" title="Code"><b><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-code-slash" viewBox="0 0 16 16">
-                                        <path
-                                            d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0m6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0" />
-                                    </svg></b></button>
-                            <button type="button" class="toolbar-btn" title="Undo"><b>↺</b></button>
-                            <button type="button" class="toolbar-btn" title="Redo"><b>↻</b></button>
-                            <button type="button" class="toolbar-btn" title="Clear"><b>🗑️</b></button>
-                            <button type="button" class="toolbar-btn" style="font-family: var(--sans);"
-                                title="Link"><b>🔗</b></button>
-                        </div>
+            /* Custom Modal Styles */
+            .modal-overlay {
+                display: none;
+                position: fixed;
+                top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0, 0, 0, 0.6);
+                z-index: 100;
+                align-items: center;
+                justify-content: center;
+                backdrop-filter: blur(4px);
+            }
+            .modal-card {
+                background: var(--paper);
+                padding: 32px;
+                border-radius: 12px;
+                border: 1px solid var(--border);
+                max-width: 400px;
+                width: 90%;
+                text-align: center;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            }
 
-                        <textarea id="content" class="editor-input editor-textarea" placeholder="Start writing here..."
-                            required></textarea>
-                    </div>
+            @media (max-width: 768px) {
+                .writer-layout {
+                    grid-template-columns: 1fr;
+                    gap: 18px;
+                }
 
-                    <div class="editor-footer">
-                        <span class="status-text" id="word-count">Word count: 0 | Auto-saved: Not yet</span>
-                        <button type="submit"
-                            style="background: var(--terracotta); color: #fff; border: none; padding: 12px 28px; border-radius: 6px; font-family: var(--sans); font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s;">
-                            Publish Blog
+                .preview-panel {
+                    position: static;
+                    top: auto;
+                    padding: 18px;
+                }
+
+                .editor-title { font-size: 26px; }
+                .editor-textarea {
+                    min-height: 280px;
+                }
+                .editor-toolbar {
+                    overflow-x: auto;
+                    white-space: nowrap;
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
+                }
+                .editor-toolbar::-webkit-scrollbar { display: none; }
+                .editor-footer {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 16px;
+                }
+
+                .preview-panel h2 {
+                    font-size: 20px;
+                }
+            }
+        </style>
+
+        <div class="writer-layout">
+            <form id="write-form" style="display: flex; flex-direction: column; gap: 16px;">
+                <input type="text" id="title" class="editor-input editor-title" placeholder="Blog Title" required>
+                <input type="text" id="tag" class="editor-input" style="font-family: var(--mono); margin-bottom: 8px;" placeholder="Tags (e.g., #math, #python)">
+
+                <div class="editor-container" style="margin-top: 8px;">
+                    <div class="editor-toolbar">
+                        <button type="button" class="toolbar-btn" onclick="formatText('**', '**')" title="Bold"><b>B</b></button>
+                        <button type="button" class="toolbar-btn" onclick="formatText('*', '*')" title="Italic"><i>I</i></button>
+                        <button type="button" class="toolbar-btn" onclick="formatText('<u>', '</u>')" title="Underline"><u>U</u></button>
+                        <button type="button" class="toolbar-btn" onclick="formatText('~~', '~~')" title="Strikethrough"><s>S</s></button>
+                        <button type="button" class="toolbar-btn" onclick="insertCodeBlock()" title="Code">
+                            <b>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-slash" viewBox="0 0 16 16">
+                                    <path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0m6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0" />
+                                </svg>
+                            </b>
                         </button>
+
+                        <!-- Custom Undo/Redo/Clear Buttons -->
+                        <button type="button" class="toolbar-btn" onclick="customUndo()" title="Undo"><b>↺</b></button>
+                        <button type="button" class="toolbar-btn" onclick="customRedo()" title="Redo"><b>↻</b></button>
+                        <button type="button" class="toolbar-btn" onclick="showClearModal()" title="Clear"><b>🗑️</b></button>
+                        <button type="button" class="toolbar-btn" onclick="formatText('[', '](https://)')" style="font-family: var(--sans);" title="Link"><b>🔗</b></button>
                     </div>
-                </form>
-            </main>
 
-            <script src="/js/editor.js"></script>
+                    <textarea id="content" class="editor-input editor-textarea" placeholder="Start writing here..." required></textarea>
+                </div>
 
-            <%- include('partials/footer') %>
+                <div class="editor-footer">
+                    <span class="status-text" id="word-count-display">Word count: 0</span>
+                    <button type="submit" style="background: var(--terracotta); color: #fff; border: none; padding: 12px 28px; border-radius: 6px; font-family: var(--sans); font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s;">
+                        Publish Blog
+                    </button>
+                </div>
+            </form>
+
+            <aside class="preview-panel">
+                <div class="preview-label">
+                    <p class="eyebrow" style="margin-bottom: 0;">Live preview</p>
+                    <span class="status-text" id="preview-stats">0 words</span>
+                </div>
+                <h2 id="preview-title" style="margin-top: 0;">Your title will appear here</h2>
+                <div class="preview-meta" id="preview-meta">Add tags and start writing to see a live markdown preview.</div>
+                <div id="preview-body" class="markdown-content preview-empty">Nothing to preview yet.</div>
+            </aside>
+        </div>
+
+        <!-- Custom Confirmation Modal -->
+        <div id="clear-modal" class="modal-overlay">
+            <div class="modal-card">
+                <h3 style="font-family: var(--serif); font-size: 24px; margin-bottom: 12px; color: var(--espresso);">Clear Editor?</h3>
+                <p style="color: var(--muted); font-size: 15px; margin-bottom: 24px; line-height: 1.6;">
+                    Are you absolutely sure you want to delete everything? This action cannot be undone.
+                </p>
+                <div style="display: flex; gap: 12px; justify-content: center;">
+                    <button type="button" onclick="hideClearModal()" style="padding: 10px 20px; border: 1px solid var(--border-strong); background: transparent; border-radius: 6px; color: var(--espresso); font-family: var(--sans); cursor: pointer; transition: 0.2s;">Cancel</button>
+                    <button type="button" onclick="confirmClear()" style="padding: 10px 20px; border: none; background: var(--terracotta); border-radius: 6px; color: white; font-family: var(--sans); cursor: pointer; transition: 0.2s;">Yes, Clear it</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="/js/markdown.js"></script>
+    <script src="/js/write.js"></script>
+    <%- include('partials/footer') %>
+</body>
+</html>

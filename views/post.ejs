@@ -1,0 +1,15 @@
+<%- include('partials/head') %>
+
+    <body>
+        <%- include('partials/navbar') %>
+
+            <main class="wrap" style="padding: 64px 24px; min-height: 70vh;">
+                <article id="post-container" class="markdown-content">
+                    <p style="color: var(--muted);">Loading post...</p>
+                </article>
+            </main>
+
+            <script src="/js/markdown.js"></script>
+            <script src="/js/post.js"></script>
+
+            <%- include('partials/footer') %>

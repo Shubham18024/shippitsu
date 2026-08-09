@@ -1,0 +1,77 @@
+<%- include('partials/head') %>
+
+    <body>
+        <%- include('partials/navbar') %>
+
+            <main class="wrap" style="padding: 64px 24px; min-height: 70vh;">
+                <div class="grid2" style="align-items: center; gap: 40px;">
+
+                    <div>
+                        <p class="eyebrow">Behind the blog</p>
+                        <h1 style="font-family: var(--serif); font-size: 44px; margin-bottom: 16px;">About the Author
+                        </h1>
+
+                        <p style="font-size: 16px; color: var(--muted); line-height: 1.8;">
+                            Hello! I am Shubham Tiwari, a mathematics student at the University of Delhi and a software
+                            developer.
+                            This blog, <em>Shippitsu</em>, is my quiet corner of the internet to share my journey
+                            through higher mathematics, full stack development, little bit research on ML and the
+                            occasional musings on life and learning.
+                        </p>
+
+                        <p style="font-size: 16px; color: var(--muted); line-height: 1.8;">
+
+                        </p>
+
+                        <!-- Button -->
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <a href="mailto:vaibhav.tiwari84478@gmail.com?subject=Hello%20Shubham!" class="btn-outline" id="contact-btn">
+                                Get in touch
+                            </a>
+
+                            <span id="copy-msg"
+                                style="font-family: var(--mono); font-size: 12px; color: var(--sage); opacity: 0; transition: opacity 0.3s;">
+                                Email copied to clipboard and opening your default email client...
+                            </span>
+                        </div>
+
+                        <script>
+                            document.getElementById('contact-btn').addEventListener('click', function (e) {
+                                navigator.clipboard.writeText('vaibhav.tiwari84478@gmail.com').then(() => {
+                                    // Showing the success message
+                                    const msg = document.getElementById('copy-msg');
+                                    msg.style.opacity = '1';
+
+                                    setTimeout(() => {
+                                        msg.style.opacity = '0';
+                                    }, 3000);
+                                });
+                            });
+                        </script>
+                    </div>
+
+                    <!-- Right Side: Profile Card -->
+                    <div
+                        style="background: var(--paper); border: 1px solid var(--border); border-radius: 10px; padding: 32px 24px; text-align: center;">
+                        <div
+                            style="width: 120px; height: 120px; border-radius: 50%; background: var(--border-strong); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 48px;">
+                            <img src="/images/smiley-face.svg" alt="Profile Picture" draggable="false"
+                                oncontextmenu="return false;" ondragstart="return false;"
+                                style="width: 100%; height: 100%; object-fit: cover; user-select: none; pointer-events: none;">
+                        </div>
+                        <h3
+                            style="font-family: var(--serif); font-size: 22px; margin-bottom: 4px; color: var(--espresso);">
+                            Shubham Tiwari</h3>
+                        <p style="font-family: var(--mono); font-size: 13px; color: var(--sage); margin-bottom: 16px;">
+                            Math Student & Developer</p>
+
+                        <p style="font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 0;">
+                            Love to build local-first architectures web apps, exploring the depths of mathematics, and
+                            sharing knowledge. This blog is a reflection of my journey and learnings.
+                        </p>
+                    </div>
+
+                </div>
+            </main>
+
+            <%- include('partials/footer') %>

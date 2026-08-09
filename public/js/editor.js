@@ -1,20 +1,19 @@
 const writeForm = document.getElementById('write-form');
 
 writeForm.addEventListener('submit', function (event) {
-    event.preventDefault();
+    event.preventDefault();  //avoid the default form submission behavior
 
     const title = document.getElementById('title').value;
-    const author = document.getElementById('author').value;
     const tag = document.getElementById('tag').value;
     const content = document.getElementById('content').value;
 
     const newPost = {
-        id: author.replace(/\s+/g, '').toLowerCase() + Date.now() + Math.floor(Math.random() * 100000).toString().padStart(5, '0'), // Creates a unique ID 
+        id: 'shubhamtiwari' + Date.now() + Math.floor(Math.random() * 100000).toString().padStart(5, '0'), // Creates a unique ID with author name, timestamp, and a random number
         title: title,
-        author: author,
+        author: 'Shubham Tiwari',  // Hardcoded author name
         tag: tag,
         content: content,
-        date: new Date().toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })
+        date: new Date().toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric' })
     };
 
     const storageKey = 'shippitsu_posts';
