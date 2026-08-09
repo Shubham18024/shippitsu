@@ -1,47 +1,34 @@
 # Shippitsu
 
-**執筆 (Shippitsu)** — Japanese for *writing*, particularly writing or authoring something for publication.
+**執筆 (Shippitsu)** means *writing* in Japanese, especially writing for publication.
 
-Shippitsu is a blogging application currently **under development**.
+Shippitsu is a lightweight blogging app built with Express and EJS. Posts are stored in the browser with `localStorage`, and the writing flow includes markdown formatting, live preview, and client-side post management.
 
-The project is being built as a learning project using:
+## Tech Stack
 
-* **Express.js** — backend/server
-* **EJS** — server-side templating
-* **JavaScript**
-* **jQuery** — frontend interactions
-* **HTML & CSS** — structure and styling
-* **localStorage** — client-side data storage
+* **Express.js** - server and routing
+* **EJS** - server-side templates
+* **Vanilla JavaScript** - editor, preview, and post logic
+* **HTML & CSS** - structure and styling
+* **localStorage** - browser-based post storage
+* **Node.js** - runtime
 
-The goal of Shippitsu is to create a simple, quiet corner on the internet for writing that matters, while exploring how a complete web application works from the frontend to the backend.
+## Features
 
-## 🚧 Development Status
+* Home feed that renders posts saved in the browser
+* Write page with markdown toolbar and live preview
+* Post detail view that renders markdown formatting
+* Delete action for posts from the home page
+* Responsive layout for desktop and mobile
+* Custom 404 page
 
-**Shippitsu is currently in active development.**
-
-Features, architecture, design, and implementation may change as development progresses.
-
-This repository represents the ongoing development of the project rather than a finished release.
-
-## 🛠️ Tech Stack
-
-| Technology   | Purpose                |
-| ------------ | ---------------------- |
-| Express.js   | Backend server         |
-| EJS          | Dynamic HTML rendering |
-| JavaScript   | Application logic      |
-| jQuery       | Frontend interactions  |
-| HTML         | Page structure         |
-| CSS          | Styling                |
-| localStorage | Client-side storage    |
-| Node.js      | Runtime                |
-
-## 📁 Project Structure
+## Project Structure
 
 ```text
 shippitsu/
 ├── public/
 │   ├── css/
+│   │── favicon_io/
 │   ├── js/
 │   ├── fonts/
 │   └── images/
@@ -56,56 +43,72 @@ shippitsu/
 │
 ├── routes/
 │   ├── index.js
-│   └── posts.js
 │
 ├── app.js
 ├── package.json
 ├── package-lock.json
-├── .gitignore
 ├── LICENSE
 └── README.md
 ```
 
-## 📌 Project Goals
+## Getting Started
 
-The main goals of Shippitsu are to:
+### Prerequisites
 
-* Build a functional blogging application.
-* Learn backend development with Express.js.
-* Understand server-side rendering with EJS.
-* Practice structuring a larger JavaScript project.
-* Use jQuery for client-side interactions.
-* Explore client-side data storage with localStorage.
-* Gradually introduce more advanced web-development concepts.
+* Node.js 18 or newer
+* npm
 
-## 🚀 Running Locally
-
-Clone the repository and install the dependencies:
+### Install
 
 ```bash
 npm install
 ```
 
-Start the development server:
+### Run locally
 
 ```bash
 npm run dev
 ```
 
-The application will be available at:
+If you prefer the production-style start command:
+
+```bash
+npm start
+```
+
+The app runs at:
 
 ```text
 http://localhost:3000
 ```
 
-## 📜 License
+## Deployment
 
-Shippitsu is licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**.
+This project is not a fit for GitHub Pages because it needs a Node/Express server.
 
-See the [`LICENSE`](LICENSE) file for the complete license text.
+Recommended deployment options:
+
+* **Render**
+* **Railway**
+* **Fly.io**
+* **Any Node.js host**
+
+Deployment settings:
+
+* Build command: `npm install`
+* Start command: `npm start`
+* Port: use the platform-provided `PORT` environment variable
+
+## Notes
+
+* Posts are stored in the browser, so they are local to each device and browser profile.
+* If the browser storage is cleared, saved posts are removed.
+* The app currently focuses on client-side post creation and display rather than a remote database.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-> **Shippitsu — a quiet corner on the internet for writing that matters.**
-
-**Status:** 🚧 In Development
+> **Shippitsu** - a quiet corner on the internet for writing that matters.
