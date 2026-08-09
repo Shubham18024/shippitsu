@@ -70,7 +70,7 @@ npm install
 npm run dev
 ```
 
-If you prefer the production-style start command:
+Or, Production-style start command:
 
 ```bash
 npm start
