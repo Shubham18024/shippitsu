@@ -70,6 +70,22 @@
                 justify-content: center;
                 font-family: var(--serif);
                 font-size: 16px;
+                line-height: 1;
+                min-width: 40px;
+                min-height: 40px;
+            }
+
+            .toolbar-btn svg {
+                width: 16px;
+                height: 16px;
+                flex: 0 0 auto;
+            }
+
+            .toolbar-btn b,
+            .toolbar-btn i,
+            .toolbar-btn u,
+            .toolbar-btn s {
+                line-height: 1;
             }
 
             .toolbar-btn:hover {
@@ -168,15 +184,19 @@
 
                 .editor-title { font-size: 26px; }
                 .editor-textarea {
-                    min-height: 280px;
+                    min-height: 300px;
                 }
                 .editor-toolbar {
-                    overflow-x: auto;
-                    white-space: nowrap;
-                    -ms-overflow-style: none;
-                    scrollbar-width: none;
+                    flex-wrap: wrap;
+                    gap: 0px;
+                    padding: 8px 16px;
                 }
-                .editor-toolbar::-webkit-scrollbar { display: none; }
+                .toolbar-btn {
+                    min-width: 38px;
+                    min-height: 38px;
+                    padding: 6px 8px;
+                    font-size: 15px;
+                }
                 .editor-footer {
                     flex-direction: column;
                     align-items: flex-start;
@@ -185,6 +205,33 @@
 
                 .preview-panel h2 {
                     font-size: 20px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .editor-toolbar {
+                    display: grid;
+                    grid-template-columns: repeat(5, minmax(0, 1fr));
+                }
+
+                .toolbar-btn {
+                    width: 100%;
+                    min-width: 0;
+                    min-height: 42px;
+                    padding: 0;
+                }
+
+                .editor-input,
+                .editor-textarea {
+                    font-size: 14px;
+                }
+
+                .editor-title {
+                    font-size: 22px;
+                }
+
+                .editor-container {
+                    margin-top: 6px;
                 }
             }
         </style>
